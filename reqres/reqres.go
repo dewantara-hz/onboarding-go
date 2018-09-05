@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// Access the given url and return the body content
 func Access(url string) string {
 
 	// Access the url
@@ -29,21 +30,27 @@ func Access(url string) string {
 	return bodyString
 }
 
-func IsJson(content string) bool {
+// IsJSON check whether the given content is JSON
+func IsJSON(content string) bool {
 	var js map[string]interface{}
 	return json.Unmarshal([]byte(content), &js) == nil
 }
 
+// IsXML check whether the given content is XML
 func IsXML(content string) bool {
 	// var _xml map[string]interface{}
 	var _xml string
 	return xml.Unmarshal([]byte(content), &_xml) == nil
 }
 
+// IsHTML check whether the given content is HTML
 func IsHTML(content string) bool {
+
+	validity := false
+
 	if strings.Contains(content, "</html>") {
-		return !IsJson(content) && !IsXML(content)
-	} else {
-		return false
+		validity = !IsJSON(content) && !IsXML(content)
 	}
+
+	return validity
 }

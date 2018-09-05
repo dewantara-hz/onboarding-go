@@ -19,7 +19,7 @@ func TestAccess(t *testing.T) {
 		validity := _case.validity
 
 		if checkType == "json" {
-			if IsJson(content) != validity {
+			if IsJSON(content) != validity {
 				t.Errorf("error")
 			}
 		} else if checkType == "xml" {
