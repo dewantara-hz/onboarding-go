@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/dewantara_hz/onboarding-go/reqres"
+	"gitlab.bukalapak.io/heindewantara/onboarding-go.git/reqres"
 )
 
 func main() {
