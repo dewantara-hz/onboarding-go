@@ -15,12 +15,13 @@ func Access(url string) string {
 	// Access the url
 	resp, err := http.Get(url)
 	bodyString := ""
-	defer resp.Body.Close()
 
 	if err != nil {
 		fmt.Println("error url : ", url)
 		return ""
 	}
+
+	defer resp.Body.Close()
 
 	if resp.StatusCode == http.StatusOK {
 		bodyBytes, _ := ioutil.ReadAll(resp.Body)
